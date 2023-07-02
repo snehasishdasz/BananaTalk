@@ -1,7 +1,9 @@
 let input = document.querySelector("textarea");
 let btn = document.querySelector("button");
 let output = document.querySelector("#output");
+let listenBtn = document.querySelector("#listen");
 let serverUrl = "https://api.funtranslations.com/translate/minion.json"
+
 
 function getUrl(inputTxt){
     return serverUrl + "?text=" + inputTxt;
@@ -26,4 +28,22 @@ function translate(){
         output.innerHTML = translatedTxt;
     }).catch(errorHandler)
 }
-btn.addEventListener('click',translate);
+function speakText() {
+    let message = output.textContent;
+
+    if ('speechSynthesis' in window) {
+        // Speech synthesis supported
+        var synthesis = window.speechSynthesis;
+        var utterance = new SpeechSynthesisUtterance(message);
+        utterance.voiceURI = 'Google US English';
+        utterance.volume = 1;
+        utterance.rate = 0.8;
+        utterance.pitch = 1.5;
+        synthesis.speak(utterance);
+    } else {
+        alert("Sorry, your browser doesn't support speech synthesis.");
+    }
+}
+
+btn.addEventListener("click", translate);
+listenBtn.addEventListener("click", speakText);
