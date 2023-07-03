@@ -259,3 +259,24 @@ p {
     margin-right: auto;
     max-width: 50rem;
 }
+/* Add media query for screens up to 600px (mobile devices) */
+/* Add media query for screens up to 600px (mobile devices) */
+@media (max-width: 600px) {
+    #leftcontainer {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    img {
+        display: none;
+      /* width: 80%;
+      margin-top: 5%;
+      margin-left: 10%; */
+    }
+  
+    textarea {
+      width: 80%;
+      margin-top: 5%;
+    }
+  }
+  
